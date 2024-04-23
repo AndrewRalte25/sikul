@@ -30,16 +30,21 @@ class GuardianController extends Controller
 
     public function submitform(Request $request)
     {
+
+       
         $validatedData = $request->validate([
             'full_name' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
             'gender' => 'required|string|in:Male,Female,Other',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|unique:users|max:255',
             'phone' => 'required|string|max:20',
             'address' => 'required|string|max:255',
             'last_marksheet' => 'required|file|mimes:pdf,jpeg,png|max:10240', 
             'class' => 'required|exists:classses,id', 
+        ], [
+            'email.unique' => 'The email has already been taken.',
         ]);
+        
 
         $user = User::create([
             'name' => $request->full_name,
@@ -53,10 +58,9 @@ class GuardianController extends Controller
             'email' => $user->email,
             'dob' => $request->date_of_birth,
             'gender' => $request->gender,
-            'class' => $request->class,
             'marksheet' => $request->file('last_marksheet')->store('last_marksheets'), 
             'address' => $request->address,
-            'phone number'=>$request->phone,
+            'phone_number'=>$request->phone,
             'class_id'=>$request->class,
             'guardian_id'=>$request->guardian_id,
           

@@ -15,7 +15,7 @@ class Student extends Model
         'class',
         'marksheet',
         'address',
-        'phone number',
+        'phone_number',
         'class_id',
         'guardian_id',
         
