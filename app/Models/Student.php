@@ -49,9 +49,9 @@ class Student extends Model
     ];
 
     public function guardian()
-    {
-        return $this->belongsTo(Guardian::class, 'user_id');
-    }
+{
+    return $this->belongsTo(Guardian::class, 'guardian_id', 'user_id');
+}
     public function subjects()
     {
         return $this->hasMany(Subject::class);
