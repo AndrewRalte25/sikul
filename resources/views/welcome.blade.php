@@ -44,6 +44,7 @@
     </style>
 </head>
 <body class="antialiased bg-gray-100">
+    <center>Imanuels</center>
     <div class="container">
         <div class="card">
             @if (Route::has('login'))
