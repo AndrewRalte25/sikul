@@ -51,4 +51,7 @@ Route::post('/assign/{id}/teacher',[AdminController::class,"teacherassign"]);
 
 
 Route::get('/guardianstudent',[GuardianController::class,"index"]);
+Route::get('/guardianadmit',[GuardianController::class,"admit"]);
+Route::post('/submitadmission',[GuardianController::class,"submitform"]);
+
 

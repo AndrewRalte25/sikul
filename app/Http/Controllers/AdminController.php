@@ -27,7 +27,7 @@ class AdminController extends Controller
 
     public function teacher()
     {
-        $user = User::where('role', '1')->get();
+        $user = Teacher::get();
         return view('admin.teacher', compact('user'));
     }
 
@@ -43,6 +43,7 @@ class AdminController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'string', 'min:8'], // Manually define password rules
             'role' => ['required', 'string'],
+            'phone' => ['required', 'string', 'digits:10'], 
         ])->validate();
     
         // Create a new user
@@ -62,6 +63,7 @@ class AdminController extends Controller
                 'name' => $user->name,
                 'email' => $user->email,
                 'role' => $user->role,
+                'phone' => $request->phone,
               
             ]);
         } elseif ($request->role == '2') {

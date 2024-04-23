@@ -11,6 +11,7 @@ class Guardian extends Model
         'user_id',
         'name',
         'email',
+        'phone',
         
     ];
 

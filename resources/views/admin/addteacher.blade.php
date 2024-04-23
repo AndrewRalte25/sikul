@@ -20,6 +20,10 @@
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
+            <div class="mt-4">
+                <x-label for="phone" value="{{ __('Phone') }}" />
+                <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required autocomplete="new-password" />
+            </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />

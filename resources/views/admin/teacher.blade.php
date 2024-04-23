@@ -58,17 +58,18 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
-                                <th>Action</th>
+                                <th>Phone</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($user as $u)
                             <tr>
-                                <td>{{ $u->id }}</td>
+                                <td>{{ $u->user_id }}</td>
                                 <td>{{ $u->name }}</td>
                                 <td>{{ $u->email }}</td>
-                                <td>
+                                <td>{{ $u->phone }}</td>
+                                {{-- <td>
                                     @php
                                         $role = '';
                                         switch ($u->role) {
@@ -89,8 +90,10 @@
                                         }
                                     @endphp
                                     {{ ucfirst($role) }}
+                                </td> --}}
+                                <td>
+                                    View
                                 </td>
-                                <td></td>
                             </tr>
                             @endforeach
                         </tbody>
