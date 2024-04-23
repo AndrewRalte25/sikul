@@ -14,4 +14,19 @@ class Subject extends Model
         'class_id',
         
     ];
+
+    public function class()
+    {
+        return $this->belongsTo(Classs::class, 'class_id');
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
 }

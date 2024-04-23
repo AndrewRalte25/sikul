@@ -47,4 +47,19 @@ class Student extends Model
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function guardian()
+    {
+        return $this->belongsTo(Guardian::class, 'user_id');
+    }
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
+
+    public function class()
+    {
+        return $this->belongsTo(Classs::class, 'class_id');
+    }
+    
 }

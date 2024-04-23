@@ -9,7 +9,16 @@ class Classs extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        
+        'name',       
     ];
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

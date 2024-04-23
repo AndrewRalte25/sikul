@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classs;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -91,5 +92,15 @@ class AdminController extends Controller
 
     return redirect()->back();
 }
+
+public function student()
+{   
+    $guardian =Guardian::get();
+    $class =Classs::get();
+    $user = Student::get();
+    // dd($user);
+    return view('admin.student', compact('user','guardian','class'));
+}
+
 
 }

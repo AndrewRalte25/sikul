@@ -41,4 +41,9 @@ class Guardian extends Model
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function student()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

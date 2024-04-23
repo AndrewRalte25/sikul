@@ -50,6 +50,15 @@ Route::post('/addteacher',[AdminController::class,"teacheradd"]);
 Route::post('/assign/{id}/teacher',[AdminController::class,"teacherassign"]);
 
 
+Route::get('/adminstudent',[AdminController::class,"student"]);
+
+
+
+
+
+
+
+
 Route::get('/guardianstudent',[GuardianController::class,"index"]);
 Route::get('/guardianadmit',[GuardianController::class,"admit"]);
 Route::post('/submitadmission',[GuardianController::class,"submitform"]);

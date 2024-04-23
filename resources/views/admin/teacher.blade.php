@@ -6,7 +6,7 @@
                 <div class="position-sticky" style="height: 100vh;">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" href="/admistudent">
+                            <a class="nav-link active text-white" href="/adminstudent">
                                 <i class="bi bi-book"></i> STUDENTS
                             </a>
                         </li>
