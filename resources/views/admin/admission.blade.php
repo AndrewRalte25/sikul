@@ -54,39 +54,50 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
+                                <th>DOB</th>
+                                <th>Gender</th>
+                                <th>Class</th>
+                                <th>Guardian</th>
+                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>Status</th>
+                                <th>Marksheet</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user as $u)
+                            @foreach ($students as $u)
                             <tr>
-                                <td>{{ $u->id }}</td>
+                                <td>{{ $u->user_id }}</td>
                                 <td>{{ $u->name }}</td>
                                 <td>{{ $u->email }}</td>
+                                <td>{{ $u->dob }}</td>
+                                <td>{{ $u->gender }}</td>
+                                <td>{{ $u->class->class_name }}</td>
+                                <td>{{ $u->guardian->name }}</td>
+                                <td>{{ $u->phone_number }}</td>
+                                <td>{{ $u->address }}</td>
+                                <td>{{ $u->status }}</td>
                                 <td>
-                                    @php
-                                        $role = '';
-                                        switch ($u->role) {
-                                            case 0:
-                                                $role = 'admin';
-                                                break;
-                                            case 1:
-                                                $role = 'teacher';
-                                                break;
-                                            case 2:
-                                                $role = 'guardian';
-                                                break;
-                                            case 3:
-                                                $role = 'student';
-                                                break;
-                                            default:
-                                                $role = 'Unknown';
-                                        }
-                                    @endphp
-                                    {{ ucfirst($role) }}
+                                    @if($u->marksheet)
+                                    <a href="{{ asset('storage/' . $u->marksheet) }}">View Marksheet</a>
+                                    
+                                    @else
+                                        No marksheet available
+                                    @endif
                                 </td>
-                                <td></td>
+                                
+                                <td>
+                                    <form method="POST" action="{{ url('/admin/'.$u->user_id.'/approve') }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-primary" style="color: black;">APPROVE</button>
+                                    </form>
+                                </td>
+                                
+
+                               
+                                
                             </tr>
                             @endforeach
                         </tbody>

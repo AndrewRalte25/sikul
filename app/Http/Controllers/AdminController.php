@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Jetstream;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -100,6 +101,21 @@ public function student()
     $user = Student::get();
     // dd($user);
     return view('admin.student', compact('user','guardian','class'));
+}
+
+public function adminadmission()
+{
+    $guardian =Guardian::get();
+    $class =Classs::get();
+    $students = Student::where('status', 'No')->get();
+    return view('admin.admission', compact('students','guardian','class'));
+}
+public function approve($id)
+{
+    $student = DB::table('students')->where('user_id','=',$id)->update(['status'=>'Yes']);
+
+    return redirect('/adminadmission')->with('success', 'Approved Successfully');
+     
 }
 
 

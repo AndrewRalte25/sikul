@@ -51,14 +51,19 @@ class GuardianController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => '3',
+           
         ]);
+        
+
+        
+        $file = $request->file('last_marksheet');
         Student::create([
-            'id' => $user->id, 
+            'user_id' => $user->id, 
             'name' => $user->name,
             'email' => $user->email,
             'dob' => $request->date_of_birth,
             'gender' => $request->gender,
-            'marksheet' => $request->file('last_marksheet')->store('last_marksheets'), 
+            'marksheet' => $file->storeAs('/last_marksheets', $file->getClientOriginalName()),
             'address' => $request->address,
             'phone_number'=>$request->phone,
             'class_id'=>$request->class,

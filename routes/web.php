@@ -43,15 +43,15 @@ Route::get('/adminclass/{id}/view',[ClassController::class, 'view']);
 Route::get('/adminsubject/{id}/add',[ClassController::class, 'indexsbj']);  
 Route::post('/adminsubject/{id}/add',[ClassController::class, 'addsbj']);
 
-
 Route::get('/adminteacher',[AdminController::class,"teacher"]);
 Route::get('/addteacher',[AdminController::class,"teacherget"]);
 Route::post('/addteacher',[AdminController::class,"teacheradd"]);
 Route::post('/assign/{id}/teacher',[AdminController::class,"teacherassign"]);
 
-
 Route::get('/adminstudent',[AdminController::class,"student"]);
 
+Route::get('/adminadmission',[AdminController::class,"adminadmission"]);
+Route::put('/admin/{id}/approve',[AdminController::class,"approve"]);
 
 
 

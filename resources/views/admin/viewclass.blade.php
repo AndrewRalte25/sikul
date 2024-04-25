@@ -31,7 +31,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/adminpayment">
+                            <a class="nav-link text-white" href="/adminadmission">
                                 <i class="bi bi-bookmark-check"></i> ADMISSION
                             </a>
                         </li>

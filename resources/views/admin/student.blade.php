@@ -31,7 +31,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/adminpayment">
+                            <a class="nav-link text-white" href="/adminadmission">
                                 <i class="bi bi-shield-check"></i> ADMISSION
                             </a>
                         </li>
@@ -60,12 +60,13 @@
                                 <th>Guardian</th>
                                 <th>Phone Number</th>
                                 <th>Address</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($user as $u)
                             <tr>
-                                <td>{{ $u->id }}</td>
+                                <td>{{ $u->user_id }}</td>
                                 <td>{{ $u->name }}</td>
                                 <td>{{ $u->email }}</td>
                                 <td>{{ $u->dob }}</td>
@@ -74,6 +75,7 @@
                                 <td>{{ $u->guardian->name }}</td>
                                 <td>{{ $u->phone_number }}</td>
                                 <td>{{ $u->address }}</td>
+                                <td>{{ $u->status }}</td>
                                 {{-- <td>
                                     @php
                                         $role = '';
