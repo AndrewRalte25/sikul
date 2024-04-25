@@ -6,33 +6,13 @@
                 <div class="position-sticky" style="height: 100vh;">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" href="/admistudent">
-                                <i class="bi bi-book"></i> STUDENTS
+                            <a class="nav-link active text-white" href="{{ url('/teacher/' . auth()->user()->id . '/class') }}">
+                                <i class="bi bi-book"></i> CLASS
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/adminteacher">
-                                <i class="bi bi-person"></i> TEACHERS
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/adminusers">
-                                <i class="bi bi-people"></i> USERS
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/adminclass">
-                                <i class="bi bi-house-door"></i> CLASS
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/adminpayment">
-                                <i class="bi bi-coin"></i> PAYMENT
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/adminpayment">
-                                <i class="bi bi-bookmark-check"></i> ADMISSION
+                            <a class="nav-link text-white" href="{{ url('/teacher/' . auth()->user()->id . '/assignment') }}">
+                                <i class="bi bi-pen"></i> ASSIGNMENT
                             </a>
                         </li>
                     </ul>
@@ -41,31 +21,19 @@
 
             <!-- Main Content -->
             <main class="col-md-10">
-                <!-- Example Card 1 -->
+                @foreach($assignments as $assignment)
                 <div class="card mb-3">
                     <div class="card-header">
-                        Featured
+                        Assignment
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">{{ $assignment->subject->subject_name }}</h5>
+                        <p class="card-text">{{ $assignment->assignment }}</p>
+                        <p class="card-text">Due Date: {{ $assignment->due_date }}</p>
+                        <!-- Add more details as needed -->
                     </div>
                 </div>
-
-                <!-- Example Card 2 -->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <!-- Add more cards as needed -->
+                @endforeach
             </main>
         </div>
     </div>

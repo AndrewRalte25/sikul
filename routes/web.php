@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,3 +65,10 @@ Route::get('/guardianadmit',[GuardianController::class,"admit"]);
 Route::post('/submitadmission',[GuardianController::class,"submitform"]);
 
 
+Route::get('/teacher/{id}/class',[TeacherController::class,"class"]);
+Route::get('/teacher/{id}/attendance',[TeacherController::class,"attendance"]);
+Route::post('/teacher/attendance',[TeacherController::class,"storeattendance"]);
+Route::get('/teacher/{id}/remarks',[TeacherController::class,"remark"]);
+Route::post('/teacher/remarks',[TeacherController::class,"storeremark"]);
+Route::get('/teacher/{id}/assignment',[TeacherController::class,"assignment"]);
+Route::post('/assignment/store',[TeacherController::class,"storeassignment"]);
