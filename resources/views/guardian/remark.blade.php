@@ -27,21 +27,22 @@
 
             <!-- Main Content -->
             <main class="col-md-10">
-                @if($assignments->isEmpty())
-                <div class="alert alert-info" role="alert">
-                    No pending assignments.
-                </div>
-                 @else
-                @foreach($assignments as $assignment)
+                @foreach($students as $student)
                 <div class="card mb-3">
-                    <div class="card-header">{{ $assignment->subject->subject_name }}</div>
+                    <div class="card-header">{{ $student->name }}</div>
                     <div class="card-body">
-                        <h5 class="card-title">Due Date: {{ $assignment->due_date }}</h5>
-                        <p class="card-text">{{ $assignment->assignment }}</p>
+                        @if($student->remarks->count() > 0)
+                            <ul>
+                                @foreach($student->remarks as $remark)
+                                    <li>{{ $remark->remarks }}</li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p class="card-text">No remarks available.</p>
+                        @endif
                     </div>
                 </div>
                 @endforeach
-                @endif
             </main>
         </div>
     </div>

@@ -63,5 +63,9 @@ class Student extends Model
     {
         return $this->belongsTo(Classs::class, 'class_id');
     }
+    public function assignments()
+    {
+        return $this->hasManyThrough(Assignment::class, Subject::class);
+    }
     
 }

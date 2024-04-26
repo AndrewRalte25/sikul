@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use App\Models\Classs;
 use App\Models\User;
 use App\Models\Student;
-use App\Models\Teacher;
+use App\Models\Remark;
 use App\Models\Guardian;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Hash;
@@ -41,6 +41,8 @@ class GuardianController extends Controller
             'address' => 'required|string|max:255',
             'last_marksheet' => 'required|file|mimes:pdf,jpeg,png|max:10240', 
             'class' => 'required|exists:classses,id', 
+            'password' => 'required|string|min:8',
+            'password_confirmation' => 'required|string|same:password|min:8',
         ], [
             'email.unique' => 'The email has already been taken.',
         ]);
@@ -74,6 +76,22 @@ class GuardianController extends Controller
        
         return redirect()->back()->with('success', 'Admission form submitted successfully!');
     }
+    public function guardianstudent()
+{
+    $guardianId = auth()->user()->id;
+    $students = Student::where('guardian_id', $guardianId)->get();
+    $remarks = Remark::get();
+    $class = Classs::get();
+    
+    
+    return view('guardian.student', compact('students','remarks','class'));
+}
+public function remark($studentId)
+{
+    $remarks = Remark::where('student_id', $studentId)->get();
+    return view('teacher.remark', compact('remarks'));
+}
+
     
     
 }

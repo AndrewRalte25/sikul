@@ -21,7 +21,7 @@
                                 <label for="remarks" class="form-label">Remarks:</label>
                                 <textarea class="form-control" name="remarks" id="remarks" rows="4"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit Remarks</button>
+                            <button type="submit" class="btn btn-primary"style="background-color: rgb(19, 19, 18)">Submit Remarks</button>
                         </form>
                     </div>
                 </div>

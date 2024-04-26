@@ -29,7 +29,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary">Submit Attendance</button>
+                            <button type="submit" class="btn btn-primary "style="background-color: rgb(19, 19, 18)">Submit Attendance</button>
                         </form>
                     </div>
                 </div>

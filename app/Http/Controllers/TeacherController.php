@@ -116,4 +116,11 @@ public function storeassignment(Request $request)
        
         return redirect('/dashboard')->with('success', 'Assignment added successfully.');
     }
+
+    public function destroy(Assignment $assignment)
+    {
+        $assignment->delete();
+
+        return redirect()->back()->with('success', 'Assignment deleted successfully.');
+    }
 }

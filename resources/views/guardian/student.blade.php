@@ -26,7 +26,36 @@
             </nav>
 
             <!-- Main Content -->
-            
+            <main class="col-md-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Students</h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Class</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($students as $student)
+                                    <tr>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->class->class_name }}</td>
+                                       <td>
+                                        <button><a href="{{ url('/guardian/' . $student->user_id . '/remarks') }}">Remark</a></button>
+                                         </td>
+                                    
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
 </x-app-layout>

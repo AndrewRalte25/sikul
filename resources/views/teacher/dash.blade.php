@@ -31,6 +31,11 @@
                         <p class="card-text">{{ $assignment->assignment }}</p>
                         <p class="card-text">Due Date: {{ $assignment->due_date }}</p>
                         <!-- Add more details as needed -->
+                        <form action="{{ url('/delete-assignment/' . $assignment->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </div>
                 </div>
                 @endforeach

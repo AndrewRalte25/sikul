@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\ClassController;
@@ -60,9 +61,12 @@ Route::put('/admin/{id}/approve',[AdminController::class,"approve"]);
 
 
 
-Route::get('/guardianstudent',[GuardianController::class,"index"]);
+Route::get('/guardianstudent',[GuardianController::class,"guardianstudent"]);
 Route::get('/guardianadmit',[GuardianController::class,"admit"]);
 Route::post('/submitadmission',[GuardianController::class,"submitform"]);
+Route::get('/guardian/{id}/remarks',[GuardianController::class,"remark"]);
+
+
 
 
 Route::get('/teacher/{id}/class',[TeacherController::class,"class"]);
@@ -72,3 +76,7 @@ Route::get('/teacher/{id}/remarks',[TeacherController::class,"remark"]);
 Route::post('/teacher/remarks',[TeacherController::class,"storeremark"]);
 Route::get('/teacher/{id}/assignment',[TeacherController::class,"assignment"]);
 Route::post('/assignment/store',[TeacherController::class,"storeassignment"]);
+Route::delete('/delete-assignment/{assignment}', [TeacherController::class, 'destroy'])->name('assignments.destroy');
+
+
+Route::get('/student/{id}/assignment',[StudentController::class,"assignment"]);

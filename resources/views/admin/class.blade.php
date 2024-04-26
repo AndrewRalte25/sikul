@@ -72,12 +72,7 @@
                                             <a href="{{ url('/adminclass/' . $u->id . '/view') }}">VIEW CLASS</a>
                                         </button>
                                     </td>
-                                    <td>
-                                        <button>
-                                            <a href="{{ url('/adminspot/' . $u->id . '/edit') }}">EDIT</a>
-                                        </button>
-                                       
-                                    </td>
+                                    
                                     
                                 
                                 </tr>

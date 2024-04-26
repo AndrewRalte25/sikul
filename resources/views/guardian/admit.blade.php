@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="container mt-5">
         <h1 class="text-center mb-4">School Admission Form</h1>
-        <form method="POST" action="/submitadmission" enctype="multipart/form-data">
+        <form id="admissionForm" method="POST" action="/submitadmission" enctype="multipart/form-data">
             @csrf
             <!-- Personal Information -->
             <div class="form-group">
@@ -24,7 +24,20 @@
                 </select>
             </div>
     
-          
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="password_confirmation">Re-enter Password:</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                @error('password_confirmation')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            
+    
             <div class="form-group">
                 <label for="email">Email Address:</label>
                 <input type="email" class="form-control" id="email" name="email" required>
@@ -60,7 +73,7 @@
                 </select>
             </div>
             <input type="hidden" name="guardian_id" value="{{ auth()->user()->id }}">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" style="background-color: rgb(19, 19, 18)">Submit</button>
         </form>
     </div>
 </x-app-layout>
