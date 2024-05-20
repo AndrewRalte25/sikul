@@ -20,6 +20,7 @@ class Student extends Model
         'class_id',
         'guardian_id',
         'status',
+        'admit',
         
     ];
 

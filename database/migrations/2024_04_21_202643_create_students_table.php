@@ -27,6 +27,7 @@ class CreateStudentsTable extends Migration
         $table->text('address');
         $table->string('phone_number');
         $table->enum('status', ['Yes', 'No'])->default('No');
+        $table->enum('admit', ['Yes', 'No'])->default('No');
         $table->timestamps();
     });
 }

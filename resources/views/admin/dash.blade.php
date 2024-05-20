@@ -32,7 +32,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/adminadmission">
-                                <i class="bi bi-bookmark-check"></i> ADMISSION
+                                <i class="bi bi-shield-check"></i> ADMISSION
                             </a>
                         </li>
                     </ul>
@@ -41,32 +41,132 @@
 
             <!-- Main Content -->
             <main class="col-md-10">
-                <!-- Example Card 1 -->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Featured
+                     <!-- Pie Charts -->
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    User Distribution
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="chart1" style="width: 250px; height: 250px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    Admission Status
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="chart2" style="width: 250px; height: 250px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+    
+                    <!-- Histogram Chart -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    Histogram
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="histogramChart" style="height: 150px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Example Card 2 -->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <!-- Add more cards as needed -->
             </main>
         </div>
     </div>
+
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Script to render charts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Pie Chart 1
+            var ctx1 = document.getElementById('chart1').getContext('2d');
+            var chart1 = new Chart(ctx1, {
+                type: 'pie',
+                data: {
+                    labels: ['Science', 'Commerce', 'Arts'],
+                    datasets: [{
+                        label: 'User Distribution',
+                        data: [120, 150, 100],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true
+                }
+            });
+
+            // Pie Chart 2
+            var ctx2 = document.getElementById('chart2').getContext('2d');
+            var chart2 = new Chart(ctx2, {
+                type: 'pie',
+                data: {
+                    labels: ['Paid', 'Pending', 'Overdue'],
+                    datasets: [{
+                        label: 'Admission Status',
+                        data: [200, 50, 20],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true
+                }
+            });
+
+            // Histogram Chart
+            var ctx3 = document.getElementById('histogramChart').getContext('2d');
+            var histogramChart = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [10000, 20000, 30000, 40000, 50000, 60000, 70000],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </x-app-layout>
