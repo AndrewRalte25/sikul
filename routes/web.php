@@ -65,6 +65,9 @@ Route::get('/guardianstudent',[GuardianController::class,"guardianstudent"]);
 Route::get('/guardianadmit',[GuardianController::class,"admit"]);
 Route::post('/submitadmission',[GuardianController::class,"submitform"]);
 Route::get('/guardian/{id}/remarks',[GuardianController::class,"remark"]);
+Route::get('/guardianfees',[GuardianController::class,"fees"]);
+
+
 
 
 

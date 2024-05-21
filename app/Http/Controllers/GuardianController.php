@@ -7,9 +7,8 @@ use App\Models\Remark;
 use App\Models\Guardian;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Jetstream;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -87,11 +86,31 @@ class GuardianController extends Controller
     return view('guardian.student', compact('students','remarks','class'));
 }
 public function remark($studentId)
-{
+{   
+    $guardianId = Auth::user()->id;
+        $students = Student::where('guardian_id', $guardianId)                           
+                            ->get();
+        
     $remarks = Remark::where('student_id', $studentId)->get();
-    return view('teacher.remark', compact('remarks'));
+    return view('guardian.remark', compact('remarks','students'));
 }
 
+public function fees()
+{   
+    $guardianId = Auth::user()->id;
+    $students = Student::where('guardian_id', $guardianId)
+                            ->where('status', 'yes')
+                            ->where('admit', 'no')
+                            ->get();
+    
+ 
+    $monthly = Student::where('guardian_id', $guardianId)
+    ->where('status', 'yes')
+    ->where('admit', 'yes')
+    ->get();
+        
+        return view('guardian.fees', compact('students','monthly'));
+}
     
     
 }
