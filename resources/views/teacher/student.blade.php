@@ -44,6 +44,7 @@
                                 <td>{{ $s->subject_name }}</td>
                                 <td>{{ $s->class->class_name }}</td>
                                 <td> <button><a href="{{ url('/teacher/' . $s->class->id . '/attendance') }}">Attendance</a></button></td>
+                                <td> <button><a href="/calender">Check Attendance</a></button></td>
                                 <td> <button><a href="{{ url('/teacher/' . $s->class->id . '/remarks') }}">Student Remarks</a></button></td>
                             </tr>
                           

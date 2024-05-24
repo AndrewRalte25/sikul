@@ -68,5 +68,9 @@ class Student extends Model
     {
         return $this->hasManyThrough(Assignment::class, Subject::class);
     }
+    public function remarks()
+    {
+        return $this->hasMany(Remark::class);
+    }
     
 }

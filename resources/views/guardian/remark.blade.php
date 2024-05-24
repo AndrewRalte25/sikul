@@ -27,22 +27,21 @@
 
             <!-- Main Content -->
             <main class="col-md-10">
-                @foreach($students as $student)
-                <div class="card mb-3">
-                    <div class="card-header">{{ $student->name }}</div>
-                    <div class="card-body">
-                        @if($student->remarks->count() > 0)
-                            <ul>
-                                @foreach($student->remarks as $remark)
-                                    <li>{{ $remark->remarks }}</li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <p class="card-text">No remarks available.</p>
-                        @endif
+                @if($remarks->isEmpty())
+                    <div class="alert alert-info" role="alert">
+                        No remarks available.
                     </div>
-                </div>
-                @endforeach
+                @else
+                    @foreach($remarks as $remark)
+                        <div class="card mb-3">
+                            <div class="card-header">{{ $remark->student->name }}</div>
+                            <div class="card-body">
+                                <p class="card-text">{{ $remark->created_at }}</p>
+                                <p class="card-text">{{ $remark->remarks }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </main>
         </div>
     </div>

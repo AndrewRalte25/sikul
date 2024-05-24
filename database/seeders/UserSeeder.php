@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
             $userId = DB::table('users')->insertGetId([
                 'name' => $teacher['name'],
                 'email' => $teacher['email'],
-                'password' => Hash::make('password123'), // Default password
+                'password' => Hash::make('12341234'), // Default password
                 'role' => '1',
             ]);
 

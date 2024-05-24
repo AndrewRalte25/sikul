@@ -87,12 +87,13 @@ class GuardianController extends Controller
 }
 public function remark($studentId)
 {   
-    $guardianId = Auth::user()->id;
+        $guardianId = Auth::user()->id;
         $students = Student::where('guardian_id', $guardianId)                           
                             ->get();
         
-    $remarks = Remark::where('student_id', $studentId)->get();
-    return view('guardian.remark', compact('remarks','students'));
+         $remarks = Remark::where('student_id', $studentId)->get();
+        //  dd($remarks);
+         return view('guardian.remark', compact('remarks','students'));
 }
 
 public function fees()

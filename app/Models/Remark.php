@@ -14,4 +14,8 @@ class Remark extends Model
         'remarks',
        
     ];
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'user_id');
+    }
 }

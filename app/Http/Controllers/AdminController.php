@@ -8,6 +8,7 @@ use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Guardian;
 use App\Models\Subject;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Jetstream;
@@ -21,6 +22,12 @@ class AdminController extends Controller
         $user = User::get();
         return view('admin.user', compact('user'));
     }
+    public function payment()
+    {
+        $payment = Payment::get();
+        return view('admin.payment', compact('payment'));
+    }
+
 
     public function class()
     {

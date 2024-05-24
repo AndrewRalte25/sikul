@@ -43,40 +43,30 @@
                                 <tr>
                                     <td>{{ $student->user_id }}</td>
                                     <td>{{ $student->name }}</td>
-                                    
-                                    <td>Pay Fees</td>
-                                  
+                                    <td>
+                                        <form action="/admitfees" method="POST">
+                                            @csrf
+                                              <script src="https://checkout.razorpay.com/v1/checkout.js"
+                                              data-key="{{ env('RAZORPAY_KEY_ID') }}"
+                                              data-amount="250000"
+                                              data-buttontext="Pay Fee"
+                                              data-name="Admission Fee Payment"
+                                              data-description="Razorpay payment"
+                                              data-image="storage/logo/logo.png"
+                                              data-prefill.name="{{ Auth::user()->name }}"
+                                              data-prefill.email="{{ Auth::user()->email }}"
+                                              data-theme.color="#ff7529">
+                                          </script>
+                                         <input type="hidden" name="student_name" value="{{ $student->name}}">
+                                         <input type="hidden" name="student_class" value="{{ $student->class_id }}">
+                                         <input type="hidden" name="student_id" value="{{ $student->user_id }}">
+                                        
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">Admission Fees Paid!!</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="container mt-4">
-                    <h1>Montly Fees</h1>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Student ID</th>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($monthly as $student)
-                                <tr>
-                                    <td>{{ $student->user_id }}</td>
-                                    <td>{{ $student->name }}</td>
-                                    <td>Pay Fees</td>
-                                  
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4">Please Complete Admission!!</td>
+                                    <td colspan="3">Admission Fees Paid!!</td>
                                 </tr>
                             @endforelse
                         </tbody>

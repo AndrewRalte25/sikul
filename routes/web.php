@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\RzpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +56,7 @@ Route::get('/adminstudent',[AdminController::class,"student"]);
 
 Route::get('/adminadmission',[AdminController::class,"adminadmission"]);
 Route::put('/admin/{id}/approve',[AdminController::class,"approve"]);
+Route::get('/adminpayment',[AdminController::class,"payment"]);
 
 
 
@@ -82,4 +85,16 @@ Route::post('/assignment/store',[TeacherController::class,"storeassignment"]);
 Route::delete('/delete-assignment/{assignment}', [TeacherController::class, 'destroy'])->name('assignments.destroy');
 
 
+
+
 Route::get('/student/{id}/assignment',[StudentController::class,"assignment"]);
+
+Route::get('/attendance', [AttendanceController::class, 'getAttendance']);
+Route::get('/calender', [AttendanceController::class, 'showCalendar']);
+
+
+
+
+Route::post('/admitfees', [RzpController::class, 'admitpay']);
+// Route::get('/admitpayment', [RzpController::class, 'admitpay']);
+// Route::get('/payment-success', [RzpController::class, 'paymentSuccess']);

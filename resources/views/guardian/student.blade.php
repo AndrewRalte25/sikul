@@ -30,7 +30,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Students</h2>
+        
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -44,9 +44,9 @@
                                     <tr>
                                         <td>{{ $student->name }}</td>
                                         <td>{{ $student->class->class_name }}</td>
-                                       <td>
+                                    <td>
                                         <button><a href="{{ url('/guardian/' . $student->user_id . '/remarks') }}">Remark</a></button>
-                                         </td>
+                                     </td>
                                     
                                     </tr>
                                     @endforeach
